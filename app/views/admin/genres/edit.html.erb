@@ -1,0 +1,13 @@
+<h1>Admin::Genres#edit</h1>
+
+<h1>ジャンルを編集</h1>
+
+<%= form_with model:@genre,url:admin_genre_path(@genre.id), methiod: :patch do |f| %>
+
+<%= f.text_field :name %>
+
+<%= f.submit'保存'%>
+
+<% end %>
+
+

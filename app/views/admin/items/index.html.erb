@@ -1,0 +1,28 @@
+<h1>Admin::Items#index</h1>
+
+
+<h1>商品一覧</h1>
+
+ <% @items.each do |item| %>
+
+  <p>ジャンル</p>
+
+  <p><%= item.genre_id %></p>
+
+  <p>画像</p>
+
+  <p><%= image_tag item.image,size:"100x100" %></p>
+
+  <p>商品名</p>
+
+  <p><%= item.name %></p>
+
+  <p>販売ステータス</p>
+
+  <%= item.is_active ? '販売中':'売切れ' %>
+  
+  <p><%= link_to"商品情報",admin_item_path(item.id)%></p>
+
+ <% end %>
+
+
