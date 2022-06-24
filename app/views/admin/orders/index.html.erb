@@ -1,0 +1,41 @@
+<h1>Admin::Orders#index</h1>
+
+<h1>管理者トップページ</h1>
+
+<h2>注文履歴一覧画面</h2>
+
+<% @orders.each do |order| %>
+
+<p>会員ID</p>
+
+  <%= order customer_id %> <p>FK</p>
+
+<p>配送先郵便番号</p>
+
+  <%= order.postal_code %>
+
+<p>配送先住所</p>
+
+  <%= order.address %>
+
+<p>配送先氏名</p>
+
+  <%= order.name %>
+  
+<p>送料</p>
+
+  <%= order.shipping_cost %>
+  
+<p>請求額</p>
+
+  <%= order.order_price %>
+  
+<p>支払方法</p>
+
+  <%= order.payment_method %>
+  
+<p>受注ステータス</p>
+
+  <%= order.status %>
+
+<% end %>

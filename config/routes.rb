@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'orders/index'
+    get 'orders/show'
+    get 'orders/destroy'
+  end
   devise_for :customers,skip: [:passwords],controllers:{
     registrations: "public/registrations",
     sessions:'public/sessions'
