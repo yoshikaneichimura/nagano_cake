@@ -12,7 +12,7 @@ class Admin::GenresController < ApplicationController
     genre = Genre.new(genre_params)
     genre.save
     redirect_to new_admin_genre_path
-end
+  end
 
   def destroy
   end
