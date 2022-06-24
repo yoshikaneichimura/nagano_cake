@@ -1,7 +1,5 @@
 class Admin::CustomersController < ApplicationController
-  def new
-  end
-
+ 
   def index
     @customers = Customer.all
   end
@@ -13,9 +11,6 @@ class Admin::CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(paramus[:id])
-  end
-
-  def create
   end
 
   def update
