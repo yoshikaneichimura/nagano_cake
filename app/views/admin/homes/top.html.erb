@@ -19,27 +19,47 @@
 
           <div class="col">
 
-<h1>注文履歴詳細画面</h1>
 
-<p>注文ID</p>
 
-  <%= @order_details.order_id %>
-  
-<p>商品ID</p>
+<h1>管理者トップページ</h1>
 
-  <%= @order_details.item_id %>
-  
-<p>購入時価格</p>
+<h2>注文履歴一覧画面</h2>
 
-  <%= @order_details.price %>
-  
-<p>数量</p>
+<% @orders.each do |order| %>
 
-  <%= @order_details.amount %>
-  
-<p>製造ステータス</p>
+<p>会員ID</p>
 
-  <%= @order_details.making_status %>
+  <%= order customer_id %> <p>FK</p>
+
+<p>配送先郵便番号</p>
+
+  <%= order.postal_code %>
+
+<p>配送先住所</p>
+
+  <%= order.address %>
+
+<p>配送先氏名</p>
+
+  <%= order.name %>
+
+<p>送料</p>
+
+  <%= order.shipping_cost %>
+
+<p>請求額</p>
+
+  <%= order.order_price %>
+
+<p>支払方法</p>
+
+  <%= order.payment_method %>
+
+<p>受注ステータス</p>
+
+  <%= order.status %>
+
+<% end %>
 
           </div>
 
@@ -50,5 +70,5 @@
     </main>
 
   </body>
-  
-</html>    
+
+</html>

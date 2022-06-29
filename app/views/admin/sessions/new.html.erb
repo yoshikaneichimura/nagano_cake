@@ -1,6 +1,27 @@
 <h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<header>
+
+     <h1>LOGO</h1>
+
+     <nav>
+       <ul>
+         <li><%= link_to"ABOUT",public_homes_about_path %></li>
+         <% if customer_signed_in? %>
+         <li><%= link_to "LOG OUT",destroy_customer_session_path, method: :delete %></li>
+         <% else %>
+         <li><%= link_to "SIGN UP",new_customer_registration_path %></li>
+         <li><%= link_to "LOG IN",new_customer_session_path %></li>
+         <% end %>
+       </ul>
+     </nav>
+</header>
+
+<body>
+  
+  <h1>管理者ログイン</h1>
+
+<%= form_with model:@admin,url: admin_session_path do |f| %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -24,3 +45,5 @@
 <% end %>
 
 <%= render "admin/shared/links" %>
+
+</body>

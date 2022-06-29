@@ -1,9 +1,28 @@
-<h1>Admin::Items#new</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>nagano_cake</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <main>
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col">
 
 <h1>商品を追加</h1>
 
   <%= form_with model: @item,method: :post, url: admin_items_path do |f| %>
-  
+
   <p>ジャンル</p>
 
   <p><%= f.collection_select :genre_id, Genre.all, :id,:name %></p>
@@ -26,7 +45,19 @@
 
   <p>販売状況</p>
 
-
   <p><%= f.submit'追加' %></p>
 
   <% end %>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </body>
+  
+<html>
+

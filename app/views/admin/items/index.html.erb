@@ -1,5 +1,46 @@
-<h1>Admin::Items#index</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>nagano_cake</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
+  <header>
+
+     <h1>LOGO</h1>
+
+     <nav>
+       <ul>
+         <li><%= link_to"商品一覧",admin_items_path %></li>
+         <li><%= link_to"会員一覧",admin_customers_path %></li>
+         <li><%= link_to"注文一覧",admin_orders_path %></li>
+         <li><%= link_to"ジャンル一覧",admin_genres_path %></li>
+         <% if admin_signed_in? %>
+         <li><%= link_to "LOG OUT",destroy_admin_sessionn_path, method: :delete %></li>
+         <% else %>
+         <li><%= link_to "LOG IN",new_admin_session_path %></li>
+         <% end %>
+       </ul>
+     </nav>
+　</header>
+
+
+
+
+
+  <body>
+
+    <main>
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col">
 
 <h1>商品一覧</h1>
 
@@ -11,7 +52,11 @@
 
   <p>画像</p>
 
-  <p><%= image_tag item.image,size:"100x100" %></p>
+  <% if item.image.attached?%>
+   <p><%= image_tag item.image,size:"100x100" %></p>
+  <% else %>
+   <p><%= image_tag 'no_image',size:"100x100" %></p>
+  <% end %>
 
   <p>商品名</p>
 
@@ -20,9 +65,21 @@
   <p>販売ステータス</p>
 
   <%= item.is_active ? '販売中':'売切れ' %>
-  
+
   <p><%= link_to"商品情報",admin_item_path(item.id)%></p>
 
  <% end %>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </body>
+
+</html>
 
 

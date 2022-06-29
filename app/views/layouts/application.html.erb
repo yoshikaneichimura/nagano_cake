@@ -6,11 +6,28 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
+
   <body>
+
+
+    <div style="background-color: pink;">
+    <h1>ADMIN</h1>
+    <nav>
+       <ul>
+         <li><%= link_to"商品一覧",admin_items_path %></li>
+         <li><%= link_to"会員一覧",admin_customers_path %></li>
+         <li><%= link_to"注文一覧",admin_orders_path %></li>
+         <li><%= link_to"ジャンル一覧",admin_genres_path %></li>
+         <li><%= link_to"admin",new_admin_session_path %></li>
+       </ul>
+     </nav>
+
+     </div>
     <%= yield %>
-  </body>
+　</body>
 </html>
