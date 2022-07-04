@@ -1,25 +1,45 @@
-<h2>Log in</h2>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NaganoCake</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-<header>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-     <h1>LOGO</h1>
+  <body>
 
-     <nav>
-       <ul>
-         <li><%= link_to"ABOUT",public_homes_about_path %></li>
-         <% if customer_signed_in? %>
-         <li><%= link_to "LOG OUT",destroy_customer_session_path, method: :delete %></li>
-         <% else %>
-         <li><%= link_to "SIGN UP",new_customer_registration_path %></li>
-         <li><%= link_to "LOG IN",new_customer_session_path %></li>
-         <% end %>
-       </ul>
-     </nav>
-</header>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-4">
+            <h1>LOGO</h1>
+          </div>
+          <div class="col-8">
+            <nav class="navbar navbar-expand-lg navbar-ligth">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><%= link_to"ABOUT",public_homes_about_path %></li>
+                  <% if customer_signed_in? %>
+                <li class="nav-item"><%= link_to "LOG OUT",destroy_customer_session_path, method: :delete %></li>
+                  <% else %>
+                <li class="nav-item"><%= link_to "SIGN UP",new_customer_registration_path %></li>
+                <li class="nav-item"><%= link_to "LOG IN",new_customer_session_path %></li>
+                  <% end %>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
 
-<body>
-  
-  <h1>管理者ログイン</h1>
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1>管理者ログイン</h1>
 
 <%= form_with model:@admin,url: admin_session_path do |f| %>
   <div class="field">
@@ -46,4 +66,11 @@
 
 <%= render "admin/shared/links" %>
 
-</body>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+
+

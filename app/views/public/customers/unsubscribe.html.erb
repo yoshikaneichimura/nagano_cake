@@ -1,0 +1,10 @@
+<h1>退会確認画面</h1>
+
+<p>本当に退会しますか？</p>
+
+<p><%= link_to"退会しない",public_customer_path(@customer) %></p>
+
+<p><%= link_to"退会する",public_customers_withdraw_path(@customer),method: :patch %></p>
+
+"true"が有効会員"false"は退会済み。
+
