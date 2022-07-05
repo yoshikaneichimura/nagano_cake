@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
- devise_for :customers,skip:[:passwords],controllers:{
+  devise_for :customers,skip:[:passwords],controllers:{
     registrations: "public/registrations",
     sessions:'public/sessions'
   }
@@ -20,6 +20,10 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe'=>"customers#unsubscribe"
     patch 'customers/withdraw'=>"customers#withdraw"
     resources :customers,only:[:show,:edit,:update,:unsubscribe,:withdraw]
+  end
+
+  namespace :public do
+    resources :addresses,only:[:index,:edit,:create,:update,:destroy]
   end
 
   namespace :admin do

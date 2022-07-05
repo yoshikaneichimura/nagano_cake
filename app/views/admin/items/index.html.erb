@@ -33,46 +33,32 @@
       <div class="container">
         <div class="row">
           <div class="col">
-
             <h1>商品一覧</h1>
-
-                <table>
-                  <thead>
-                    <tr>
-                      <th>商品ID</th>
-                      <th>商品名</th>
-                      <th>税抜価格</th>
-                      <th>ジャンル</th>
-                      <th>ステータス</th>
-                    </tr>
-                  </thead>
-
-                  <% @items.each do |item| %>
-
-                  <tbody>
-                    <tr>
-                      <td></td>
-                      <td><%= item.name %></td>
-                      <td></td>
-                      <td><%= item.genre_id %></td>
-                      <td><%= item.is_active ? '販売中':'売切れ' %></td>
-                    </tr>
-                  </tbody>
-                  <p><%= link_to"商品情報",admin_item_path(item.id)%></p>
-                  <% end %>
-
-
-
-
-
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>商品ID</th>
+                    <th>商品名</th>
+                    <th>税抜価格</th>
+                    <th>ジャンル</th>
+                    <th>ステータス</th>
+                  </tr>
+                </thead>
+                <% @items.each do |item| %>
+                <tbody>
+                  <tr>
+                    <td><%= item.id %></td>
+                    <td><%= link_to"#{item.name}",admin_item_path(item.id) %></td>
+                    <td><%= item.price%></td>
+                    <td><%= item.genre_id %></td>
+                    <td><%= item.is_active ? '販売中':'売切れ' %></td>
+                  </tr>
+                </tbody>
+                <% end %>
+              </table>
           </div>
-
         </div>
-
       </div>
-
     </main>
-
   </body>
-
 </html>

@@ -8,56 +8,41 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-
     <main>
-
       <div class="container">
-
         <div class="row">
-
           <div class="col">
+            <h1>商品新規登録</h1>
+              <%= form_with model: @item,method: :post, url: admin_items_path do |f| %>
 
-<h1>商品を追加</h1>
+              <p>画像</p>
+              <p><%= f.file_field :image,accept:"image/*" %></p>
 
-  <%= form_with model: @item,method: :post, url: admin_items_path do |f| %>
+              <p>商品名</p>
+              <p><%= f.text_field :name %></p>
 
-  <p>ジャンル</p>
+              <p>ジャンル</p>
+              <p><%= f.collection_select :genre_id, Genre.all, :id,:name %></p>
 
-  <p><%= f.collection_select :genre_id, Genre.all, :id,:name %></p>
+              <p>説明</p>
+              <p><%= f.text_area :introduction %></p>
 
-  <p>画像</p>
+              <p>ジャンル</p>
+              <p><%= f.collection_select :genre_id, Genre.all, :id,:name %></p>
 
-  <p><%= f.file_field :image,accept:"image/*" %></p>
+              <p>税抜価格</p>
+              <p><%= f.text_field :price %></p>
 
-  <p>商品名</p>
+              <p><%= f.select :is_active,[['販売中',true],['売り切れ',false]] %></p>
 
-  <p><%= f.text_field :name %></p>
+              <p><%= f.submit'追加' %></p>
+          　　　　<% end %>
 
-  <p>説明</p>
-
-  <p><%= f.text_area :introduction %></p>
-
-  <p>金額</p>
-
-  <p><%= f.text_field :price %></p>
-
-  <p>販売状況</p>
-
-  <p><%= f.submit'追加' %></p>
-
-  <% end %>
-
+            </div>
           </div>
-
         </div>
-
-      </div>
-
-    </main>
-
+      </main>
   </body>
-  
 <html>
 
