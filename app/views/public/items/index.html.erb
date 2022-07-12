@@ -1,0 +1,22 @@
+<h1>Public::Items#index</h1>
+<p>Find me in app/views/public/items/index.html.erb</p>
+
+<h4>商品一覧</h4><h5>全件
+</h5>
+
+ <% @items.each do |item| %>
+
+<% if item.image.attached? %>
+ <p><%= image_tag item.image,size:"100x100" %></p>
+<% else %>
+ <p><%= image_tag 'no_image',size:"100x100" %></p>
+<% end %>
+
+<p><%= link_to'商品情報', public_item_path(item.id) %></p>
+ <p><%= item.name %></p>
+
+ <p>￥<%= item.price %></p>
+
+ <% end %>
+
+

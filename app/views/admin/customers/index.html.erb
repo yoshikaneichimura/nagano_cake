@@ -8,50 +8,32 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-
     <main>
-
       <div class="container">
-
         <div class="row">
-
           <div class="col">
-
-<h1>Admin::Customers#index</h1>
-
-<h1>会員一覧</h1>
-
-<% @customers.each do |customer|%>
-
-<p>姓</p>
-
-<p><%= customer.last_name %></p>
-
-<p>名</p>
-
-<p><%= customer.first_name %></p>
-
-<p>メールアドレス</p>
-
-<p><%= customer.email %></p>
-
-<p>電話番号</p>
-
-<p><%= customer.telephone_number %></p>
-
-<p><%= link_to"会員情報",admin_customer_path(customer.id) %></p>
-
-<% end %>
-
+            <h1>会員一覧</h1>
+            <table class="table table-striped">
+              <tr>
+                 <th>会員ID</th>
+                 <th>氏名</th>
+                 <th>メールアドレス</th>
+                 <th>ステータス</th>
+              </tr>
+            　<% @customers.each do |customer|%>
+            　<tr>
+            　  <td><%= customer.id %></td>
+            　  <td><%= link_to "#{customer.last_name} ""#{customer.first_name}",admin_customer_path(customer.id)  %></td>
+            　  <td><%= customer.email %></td>
+            　  <td><%= customer.is_active ? '有効':'退会' %></td>
+            　</tr>
+            　<% end %>
+            </table>
           </div>
-
         </div>
-
       </div>
-
     </main>
-
   </body>
+</html>
 

@@ -26,6 +26,15 @@ Rails.application.routes.draw do
     resources :addresses,only:[:index,:edit,:create,:update,:destroy]
   end
 
+  namespace :public do
+    resources :items,only:[:index,:show]
+  end
+
+  namespace :public do
+    delete 'cart_items/destroy_all'=>"cart_items#destroy_all"
+    resources :cart_items,only:[:index,:update,:destroy,:create]
+  end
+
   namespace :admin do
     get '/'=>"homes#top"
   end

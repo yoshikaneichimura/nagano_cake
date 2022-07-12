@@ -27,7 +27,7 @@
 
 <%= f.text_field :name %>
 
-<%= f.submit'保存'%>
+<%= f.submit'変更保存',class:"btn btn-success"%>
 
 <% end %>
 
@@ -42,5 +42,7 @@
   </body>
   
 </html>    
+<td><%= cart_item.subtotal %></td>
+<td> link_to"削除",public_cart_item_path(@item.id),method: :delete </td>
 
-
+<% @合計金額 += cart_item.subtotal %>

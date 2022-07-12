@@ -11,22 +11,32 @@
   </head>
 
   <body>
-
-    <header>
+    <header style="background-color: gray;">
       <div class="container">
         <div class="row">
           <div class="col-4">
-            <h1>LOGO</h1>
+            <h1>NAGANO</h1>
           </div>
           <div class="col-8">
-            <nav class="navbar navbar-expand-lg navbar-ligth">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><%= link_to"ABOUT",public_homes_about_path %></li>
+            <nav class="navbar">
+              <ul class="navbar navbar">
+                <li class="nav-item">
+                  <%= link_to"About",public_homes_about_path ,class:"btn btn-white" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to"商品一覧",public_items_path ,class:"btn btn-white" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "新規登録",new_customer_registration_path ,class:"btn btn-white" %>
+                </li>
                   <% if customer_signed_in? %>
-                <li class="nav-item"><%= link_to "LOG OUT",destroy_customer_session_path, method: :delete %></li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト",destroy_customer_session_path, method: :delete ,class:"btn btn-white" %>
+                </li>
                   <% else %>
-                <li class="nav-item"><%= link_to "SIGN UP",new_customer_registration_path %></li>
-                <li class="nav-item"><%= link_to "LOG IN",new_customer_session_path %></li>
+                <li class="nav-item">
+                  <%= link_to "ログイン",new_customer_session_path ,class:"btn btn-white" %>
+                </li>
                   <% end %>
               </ul>
             </nav>
@@ -34,37 +44,35 @@
         </div>
       </div>
     </header>
-
     <main>
       <div class="container">
         <div class="row">
-          <div class="col-12">
+          <div class="col">
             <h1>管理者ログイン</h1>
+            <%= form_with model:@admin,url: admin_session_path do |f| %>
+              <div class="field">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              </div>
 
-<%= form_with model:@admin,url: admin_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+              <div class="field">
+                <%= f.label :password %><br />
+                <%= f.password_field :password, autocomplete: "current-password" %>
+              </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+              <% if devise_mapping.rememberable? %>
+                <div class="field">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+                </div>
+              <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
+              <div class="actions">
+                <%= f.submit "ログイン" %>
+              </div>
+            <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "admin/shared/links" %>
+            <%= render "admin/shared/links" %>
 
           </div>
         </div>
@@ -72,5 +80,3 @@
     </main>
   </body>
 </html>
-
-

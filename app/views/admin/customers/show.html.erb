@@ -23,6 +23,9 @@
 
 <h1>会員情報</h1>
 
+<p>会員ID</p>
+<p><%= @customer.id %></p>
+
 <p>姓</p>
 
 <p><%= @customer.last_name %></p>
@@ -61,5 +64,7 @@
 
 <p>退会ステータス</p>
 
-<p><%= @customer.is_active %></p>
+<p><%= @customer.is_active ? '有効':'退会'%></p>
+
+<%= link_to'編集する',edit_admin_customer_path(@customer.id),class:"btn btn-success" %>
 

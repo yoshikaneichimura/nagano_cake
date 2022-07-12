@@ -23,7 +23,10 @@
 
 <h1>会員情報編集</h1>
 
-<%= form_with model:@customer,url: admin_customer_path (@customer.id),method: :pacth do |f| %>
+<%= form_with model: @customer,url: admin_customer_path(@customer.id),method: :patch do |f| %>
+
+<p>会員ID</p>
+<p><%= f.text_field :id %></p>
 
 <p>姓</p>
 
@@ -62,8 +65,9 @@
 <p><%= f.text_field :telephone_number %></p>
 
 <p>退会ステータス</p>
+<p><%= f.select :is_active,[['有効',true],['退会',false]] %></p>
 
-<%= f.submit'保存' %>
+<%= f.submit'保存',class:"btn btn-success" %>
 
 <% end %>
 

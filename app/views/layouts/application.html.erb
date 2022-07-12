@@ -15,16 +15,12 @@
       <h1>作業用</h1>
         <nav>
           <ul>
-            <li><%= link_to"新規商品登録",new_admin_item_path %></li>
-            <li><%= link_to"商品一覧",admin_items_path %></li>
-            <li><%= link_to"会員一覧",admin_customers_path %></li>
-            <li><%= link_to"注文一覧",admin_orders_path %></li>
-            <li><%= link_to"ジャンル一覧",admin_genres_path %></li>
-            <li><%= link_to"admin",new_admin_session_path %></li>
-            <li><%= link_to"会員ログイン",new_customer_session_path %></li>
-            <li><%= link_to"配送先",public_addresses_path %></li>
 
-          </ul>
+
+　　　　　　<li><%= link_to"管理者トップページ",admin_orders_path %></li>
+            <li><%= link_to"管理者ログイン",new_admin_session_path %></li>
+            <li><%= link_to"会員ログイン",new_customer_session_path %></li>
+
         </nav>
      </div>
     <%= yield %>

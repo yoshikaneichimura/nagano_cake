@@ -9,31 +9,73 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
+  <header style="background-color: pink;">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+       <h1>LOGO</h1>
 
-     <h1>LOGO</h1>
+        <button class="navbar-toggler" type="toggler" date-toggler="collapse"date-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-     <nav>
-       <ul>
-         <li><%= link_to"商品一覧",admin_items_path %></li>
-         <li><%= link_to"会員一覧",admin_customers_path %></li>
-         <li><%= link_to"注文一覧",admin_orders_path %></li>
-         <li><%= link_to"ジャンル一覧",admin_genres_path %></li>
-         <% if admin_signed_in? %>
-         <li><%= link_to "LOG OUT",destroy_admin_sessionn_path, method: :delete %></li>
-         <% else %>
-         <li><%= link_to "LOG IN",new_admin_session_path %></li>
-         <% end %>
-       </ul>
-     </nav>
-　</header>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
+              <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item"> 1
+                  <% if customer_signed_in? %>
+                　 <%= link_to"マイページ",public_customer_path ,class:"btn btn-white" %>
+                　<% elsif admin_signed_in? %>
+                　 <%= link_to"商品一覧",admin_items_path ,class:"btn btn-white" %>
+                  <% else %>
+                   <%= link_to"About",public_homes_about_path ,class:"btn btn-white" %>
+                  <% end %>
+                </li>
+
+                <li class="nav-item">  2
+                  <% if admin_signed_in? %>
+                   <%= link_to"会員一覧",admin_customers_path ,class:"btn btn-white" %>
+                  <% else %>
+                   <%= link_to"商品一覧",public_items_path ,class:"btn btn-white" %>
+                  <% end %>
+                </li>
+
+                <li class="nav-item"> 3
+                  <% if customer_signed_in? %>
+                   <%= link_to"カート",public_cart_items_path,class:"btn btn-white" %>
+
+
+
+
+
+
+                <li class="nav-item">
+                  <%= link_to"注文一覧",admin_orders_path,class:"btn btn-white" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to"ジャンル一覧",admin_genres_path,class:"btn btn-white" %>
+                </li>
+                  <% if admin_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to "ログアウト",destroy_admin_sessionn_path,method: :delete ,class:"btn btn-white" %>
+                </li>
+                  <% else %>
+                <li class="nav-item">
+                  <%= link_to "ログイン",new_admin_session_path,class:"btn btn-white" %>
+                </li>
+                  <% end %>
+              </ul>
+            </nav>
+          </div>
+    </header>
   <body>
     <main>
       <div class="container">
         <div class="row">
           <div class="col">
-            <h1>商品一覧</h1>
+            <h4>商品一覧</h4>
+              <%= link_to"新規商品登録",new_admin_item_path %>
               <table class="table table-striped">
                 <thead>
                   <tr>
@@ -50,7 +92,7 @@
                     <td><%= item.id %></td>
                     <td><%= link_to"#{item.name}",admin_item_path(item.id) %></td>
                     <td><%= item.price%></td>
-                    <td><%= item.genre_id %></td>
+                    <td><%= item.genre.name %></td>
                     <td><%= item.is_active ? '販売中':'売切れ' %></td>
                   </tr>
                 </tbody>
