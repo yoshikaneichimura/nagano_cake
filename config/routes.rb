@@ -35,6 +35,12 @@ Rails.application.routes.draw do
     resources :cart_items,only:[:index,:update,:destroy,:create]
   end
 
+  namespace :public do
+    post 'orders/comfirm'
+    get 'orders/complete'
+   resources :orders,only:[:new,:index,:show,:create]
+  end
+
   namespace :admin do
     get '/'=>"homes#top"
   end

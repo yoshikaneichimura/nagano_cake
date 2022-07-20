@@ -8,11 +8,9 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
-    <main>
+
       <div class="container">
-        <div class="row">
-          <div class="col">
+
             <h4>商品新規登録</h4>
               <%= form_with model: @item,method: :post, url: admin_items_path do |f| %>
 
@@ -21,9 +19,6 @@
 
               <p>商品名</p>
               <p><%= f.text_field :name %></p>
-
-              <p>ジャンル</p>
-              <p><%= f.collection_select :genre_id, Genre.all, :id,:name %></p>
 
               <p>説明</p>
               <p><%= f.text_area :introduction %></p>
@@ -36,13 +31,12 @@
 
               <p><%= f.select :is_active,[['販売中',true],['売り切れ',false]] %></p>
 
-              <p><%= f.submit'新規登録',class:"btn btn-success" %></p>
-          　　　　<% end %>
 
+
+
+              <p><%= f.submit'新規登録',class:"btn btn-success" %></p>
+              <% end %>
             </div>
-          </div>
-        </div>
-      </main>
   </body>
 <html>
 

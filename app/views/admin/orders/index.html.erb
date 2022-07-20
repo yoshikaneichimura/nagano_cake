@@ -8,57 +8,11 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+<div class="container">
 
-  <body>
-    <header style="background-color: pink;">
-      <div class="container">
-        <div class="row">
-          <div class="col-4">
-            <h1>ADEMIN</h1>
-          </div>
-          <div class="col-8">
-            <nav class="navbar">
-              <ul class="navbar navbar">
-                <li class="nav-item">
-                  <%= link_to"商品一覧",admin_items_path ,class:"btn btn-white" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to"会員一覧",admin_customers_path ,class:"btn btn-white" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to"注文一覧",admin_orders_path,class:"btn btn-white" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to"ジャンル一覧",admin_genres_path,class:"btn btn-white" %>
-                </li>
-                  <% if admin_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to "ログアウト",destroy_admin_sessionn_path,method: :delete ,class:"btn btn-white" %>
-                </li>
-                  <% else %>
-                <li class="nav-item">
-                  <%= link_to "ログイン",new_admin_session_path,class:"btn btn-white" %>
-                </li>
-                  <% end %>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </header>
-    <main>
+<h5>管理者トップページ</h5>
 
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col">
-
-
-
-<h1>管理者トップページ</h1>
-
-<h2>注文履歴一覧画面</h2>
+<h6>注文履歴一覧画面</h6>
 
 <% @orders.each do |order| %>
 
@@ -97,13 +51,5 @@
 <% end %>
 
           </div>
-
-        </div>
-
-      </div>
-
-    </main>
-
-  </body>
 
 </html>

@@ -8,40 +8,8 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
-    <header style="background-color: gray;">
-      <div class="container">
-        <div class="row">
-          <div class="col-4">
-            <h1>NAGANO</h1>
-          </div>
-          <div class="col-8">
-            <nav class="navbar">
-              <ul class="navbar navbar">
-                <li class="nav-item">
-                  <%= link_to"About",public_homes_about_path ,class:"btn btn-white" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to"商品一覧",public_items_path ,class:"btn btn-white" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "新規登録",new_customer_registration_path ,class:"btn btn-white" %>
-                </li>
-                  <% if customer_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to "ログアウト",destroy_customer_session_path, method: :delete ,class:"btn btn-white" %>
-                </li>
-                  <% else %>
-                <li class="nav-item">
-                  <%= link_to "ログイン",new_customer_session_path ,class:"btn btn-white" %>
-                </li>
-                  <% end %>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </header>
+ <div>
+
 
     <h1>Public::Homes#top</h1>
 <p>Find me in app/views/public/homes/top.html.erb</p>
@@ -52,20 +20,25 @@
   <p>会員でない方も商品の閲覧はできますが、</p>
   <p>購入には会員登録が必要になります。</p>
 </div>
+<div>
+  <h6>新着商品</h6>
 
-<h3>新着商品</h3>
+  <% @items.each do |item| %>
 
-<% @items.each do |item| %>
+  <% if item.image.attached? %>
+   <p><%= image_tag item.image,size: "300x300" %></p>
+  <% else %>
+   <p><%= image_tag 'no_image',size:"300x300" %></p>
+  <% end %>
 
-<% if item.image.attached? %>
- <%= image_tag item.image,size: "50x50" %>
-<% else %>
- <%= image_tag 'no_image',size:"50x50" %>
-<% end %>
+  <p><%= item.name %></p>
 
-<%= item.name %>
+  <p>￥<%= item.price %></p>
 
-<% end %>
+  <% end %>
+  <!--paginate items-->
 
-</body>
+  </div>
+
+  <%=link_to"全ての商品を見る",public_items_path %>
 </html>

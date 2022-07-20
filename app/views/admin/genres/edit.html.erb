@@ -9,19 +9,9 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-
-    <main>
-
       <div class="container">
 
-        <div class="row">
-
-          <div class="col">
-
-<h1>Admin::Genres#edit</h1>
-
-<h1>ジャンルを編集</h1>
+<h5>ジャンルを編集</h5>
 
 <%= form_with model:@genre,url:admin_genre_path(@genre.id), methiod: :patch do |f| %>
 
@@ -31,18 +21,5 @@
 
 <% end %>
 
-          </div>
-
-        </div>
-
-      </div>
-
-    </main>
-
-  </body>
-  
+  </div>
 </html>    
-<td><%= cart_item.subtotal %></td>
-<td> link_to"削除",public_cart_item_path(@item.id),method: :delete </td>
-
-<% @合計金額 += cart_item.subtotal %>

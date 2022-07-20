@@ -11,44 +11,10 @@
   </head>
 
   <body>
-    <header style="background-color: gray;">
-      <div class="container">
-        <div class="row">
-          <div class="col-4">
-            <h1>NAGANO</h1>
-          </div>
-          <div class="col-8">
-            <nav class="navbar">
-              <ul class="navbar navbar">
-                <li class="nav-item">
-                  <%= link_to"About",public_homes_about_path ,class:"btn btn-white" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to"商品一覧",public_items_path ,class:"btn btn-white" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "新規登録",new_customer_registration_path ,class:"btn btn-white" %>
-                </li>
-                  <% if customer_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to "ログアウト",destroy_customer_session_path, method: :delete ,class:"btn btn-white" %>
-                </li>
-                  <% else %>
-                <li class="nav-item">
-                  <%= link_to "ログイン",new_customer_session_path ,class:"btn btn-white" %>
-                </li>
-                  <% end %>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </header>
     <main>
       <div class="container">
-        <div class="row">
-          <div class="col">
-            <h1>管理者ログイン</h1>
+
+            <h5>管理者ログイン</h5>
             <%= form_with model:@admin,url: admin_session_path do |f| %>
               <div class="field">
                 <%= f.label :email %><br />
@@ -75,8 +41,5 @@
             <%= render "admin/shared/links" %>
 
           </div>
-        </div>
-      </div>
-    </main>
-  </body>
+
 </html>

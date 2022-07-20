@@ -9,62 +9,45 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
 
-    <main>
+    <h5>会員情報</h5>
 
-      <div class="container">
+    <p>会員ID</p>
+    <p><%= @customer.id %></p>
 
-        <div class="row">
+    <p>氏名</p>
 
-          <div class="col">
+    <p><%= @customer.last_name %><%= @customer.first_name %></p>
 
-<h1>Admin::Customers#show</h1>
+    <p>フリガナ</p>
 
-<h1>会員情報</h1>
+    <p><%= @customer.last_name_kana %><%= @customer.first_name_kana %></p>
 
-<p>会員ID</p>
-<p><%= @customer.id %></p>
+    <p>メールアドレス</p>
 
-<p>姓</p>
+    <p><%= @customer.email %></p>
 
-<p><%= @customer.last_name %></p>
+    <p>パスワード</p>
 
-<p>名</p>
+    <p><%= @customer.encrypted_password %></p>
 
-<p><%= @customer.first_name %></p>
+    <p>郵便番号</p>
 
-<p>姓カナ</p>
+    <p><%= @customer.postal_code %></p>
 
-<p><%= @customer.last_name_kana %></p>
+    <p>住所</p>
 
-<p>名カナ</p>
+    <p><%= @customer.address %></p>
 
-<p><%= @customer.first_name_kana %></p>
+    <p>電話番号</p>
 
-<p>メールアドレス</p>
+    <p><%= @customer.telephone_number %></p>
 
-<p><%= @customer.email %></p>
+    <p>会員ステータス</p>
 
-<p>パスワード</p>
+    <p><%= @customer.is_active ? '有効':'退会'%></p>
 
-<p><%= @customer.encrypted_password %></p>
+    <%= link_to'編集する',edit_admin_customer_path(@customer.id),class:"btn btn-success" %>
 
-<p>郵便番号</p>
-
-<p><%= @customer.postal_code %></p>
-
-<p>住所</p>
-
-<p><%= @customer.address %></p>
-
-<p>電話番号</p>
-
-<p><%= @customer.telephone_number %></p>
-
-<p>退会ステータス</p>
-
-<p><%= @customer.is_active ? '有効':'退会'%></p>
-
-<%= link_to'編集する',edit_admin_customer_path(@customer.id),class:"btn btn-success" %>
+    <p>注文履歴一覧を見る</p>
 
