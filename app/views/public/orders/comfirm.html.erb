@@ -1,63 +1,55 @@
-<h1>Public::Orders#comfirm</h1>
-<p>Find me in app/views/public/orders/comfirm.html.erb</p>
+<div class="container">
+  <h5><strong>注文情報確認面</strong></h5>
 
-<h5>注文情報確認面</h5>
+  <div class="row">
 
-<div>
-  <table>
-    <thead>
-      <tr>
-        <th>商品名</th>
-        <th>単価(税込)</th>
-        <th>数量</th>
-        <th>小計</th>
-       </tr>
-     </thead>
-    <tbody>
-      <% @cart_items.each do |cart_item| %>
-      <tr>
-        <td><%= image_tag cart_item.item.image,size:"50x50"%><%= cart_item.item.name %></td>
-        <td><%= cart_item.item.with_tax_price %></td>
-        <td><%= cart_item.amount %></td>
-        <td><%= cart_item.subtotal %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+    <div class="col-lg-8">
+      <table class="table table-striped" >
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+           </tr>
+         </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td><%= image_tag cart_item.item.image,size:"50x50"%><%= cart_item.item.name %></td>
+            <td><%= cart_item.item.with_tax_price %></td>
+            <td><%= cart_item.amount %></td>
+            <td><%= cart_item.subtotal %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
-<div>
-  <table>
-    <thead>
-      <tr>
-        <th>送料</th>
-        <th>商品合計</th>
-        <th>請求金額</th>
-      </tr>
-    <thead>
-    <tbody>
-      <tr>
-        <td><%= @order.shipping_cost %></td>
-        <td><%= @total.round.to_s(:delimited ) %></td>
-        <td><%= @order.order_price %></td>
-      </tr>
-    </tbody>
-   </table>
- </div>
+    <div class="col-lg-4">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>送料</th>
+            <th>商品合計</th>
+            <th>請求金額</th>
+          </tr>
+        <thead>
+        <tbody>
+          <tr>
+            <td><%= @order.shipping_cost %></td>
+            <td><%= @total.round.to_s(:delimited ) %></td>
+            <td><%= @order.order_price %></td>
+          </tr>
+        </tbody>
+       </table>
+     </div>
+  </div>
 
- <div>
-   <h5>支払方法</h5>
-   <%= @order.payment_method_i18n %>
-
-   
- </div>
-
- <div>
-   <h5>お届け先</h5>
-
-     <%= @order.postal_code %>
-     <%= @order.address %>
-     <%= @order.name %>
+ <div class="row">
+   <label><strong>支払方法</strong>　　　<%= @order.payment_method_i18n %></label>
+   <br/>
+   <label><strong>お届け先</strong>　　　〒<%= @order.postal_code %>　<%= @order.address %>　<%= @order.name %></label>
 
    <%= form_with model: @order,url: public_orders_path,method: :post  do |f| %>
 
@@ -66,9 +58,15 @@
    <%= f.hidden_field :address,:value => @order.address %>
    <%= f.hidden_field :name,:value => @order.name %>
    <%= f.hidden_field :payment_method,:value => @order.payment_method %>
+ </div>
 
-   <%= f.submit %>
+ <div class="row">
+
+   <%= f.submit "注文を確定する",class:"btn btn-success"%>
 
    <% end %>
 
+ </div>
+
 </div>
+

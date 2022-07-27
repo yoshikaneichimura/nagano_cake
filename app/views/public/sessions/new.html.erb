@@ -1,3 +1,6 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10">
 <h3>ログイン</h3>
 
 <h5>会員の方はこちらからログイン</h5>
@@ -20,10 +23,14 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "ログイン" %>
+    <%= f.submit "ログイン",class:"btn btn-info" %>
   </div>
 <% end %>
 
-<h3>会員登録がお済でない方</h3>
+<h6>会員登録がお済でない方</h6>
 
 <p><%= link_to'こちら',new_customer_registration_path %>から新規登録を下さい。</p>
+
+    </div>
+  </div>
+</div>

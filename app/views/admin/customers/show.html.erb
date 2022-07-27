@@ -1,53 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>nagano_cake</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<div class="container">
+  <h5><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h5>
 
+    <div class="row">
 
-    <h5>会員情報</h5>
+      <div class="col-lg">
+      <label>会員ID</label>　　　　　　　<label><%= @customer.id %></label>
+      <br/>
+      <label>氏名</label>　　　　　　　　<label><%= @customer.last_name %><%= @customer.first_name %></label>
+      <br/>
+      <label>フリガナ</label>　　　　　　<label><%= @customer.last_name_kana %><%= @customer.first_name_kana %></label>
+      <br/>
+      <label>メールアドレス</label>　　　<label><%= @customer.email %></label>
+      <br/>
+      <label>郵便番号</label>　　　　　　<label><%= @customer.postal_code %></label>
+      <br/>
+      <label>住所</label>　　　　　　　　<label><%= @customer.address %></label>
+      <br/>
+      <label>電話番号</label>　　　　　　<label><%= @customer.telephone_number %></label>
+      <br/>
+      <label>会員ステータス</label>　　　<label><%= @customer.is_active ? '有効':'退会'%></label>
+      <br/>
+      <%= link_to'編集する',edit_admin_customer_path(@customer.id),class:"btn btn-success" %>
+      </div>
 
-    <p>会員ID</p>
-    <p><%= @customer.id %></p>
-
-    <p>氏名</p>
-
-    <p><%= @customer.last_name %><%= @customer.first_name %></p>
-
-    <p>フリガナ</p>
-
-    <p><%= @customer.last_name_kana %><%= @customer.first_name_kana %></p>
-
-    <p>メールアドレス</p>
-
-    <p><%= @customer.email %></p>
-
-    <p>パスワード</p>
-
-    <p><%= @customer.encrypted_password %></p>
-
-    <p>郵便番号</p>
-
-    <p><%= @customer.postal_code %></p>
-
-    <p>住所</p>
-
-    <p><%= @customer.address %></p>
-
-    <p>電話番号</p>
-
-    <p><%= @customer.telephone_number %></p>
-
-    <p>会員ステータス</p>
-
-    <p><%= @customer.is_active ? '有効':'退会'%></p>
-
-    <%= link_to'編集する',edit_admin_customer_path(@customer.id),class:"btn btn-success" %>
-
-    <p>注文履歴一覧を見る</p>
+    </div>
+</div>
 

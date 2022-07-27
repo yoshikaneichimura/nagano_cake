@@ -1,25 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>nagano_cake</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-      <div class="container">
+<div class="container">
 
 <h5>ジャンルを編集</h5>
 
-<%= form_with model:@genre,url:admin_genre_path(@genre.id), methiod: :patch do |f| %>
+  <%= form_with model:@genre,url:admin_genre_path(@genre.id), methiod: :patch do |f| %>
+  
+  <%= f.text_field :name %>
+  
+  <%= f.submit'変更保存',class:"btn btn-success"%>
+  
+  <% end %>
 
-<%= f.text_field :name %>
-
-<%= f.submit'変更保存',class:"btn btn-success"%>
-
-<% end %>
-
-  </div>
-</html>    
+</div>
+  

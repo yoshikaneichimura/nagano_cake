@@ -1,74 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>nagano_cake</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-
-    <main>
-
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col">
-
-
-
-<h1>管理者トップページ</h1>
-
-<h2>注文履歴一覧画面</h2>
-
-<% @orders.each do |order| %>
-
-<p>会員ID</p>
-
-  <%= order customer_id %> <p>FK</p>
-
-<p>配送先郵便番号</p>
-
-  <%= order.postal_code %>
-
-<p>配送先住所</p>
-
-  <%= order.address %>
-
-<p>配送先氏名</p>
-
-  <%= order.name %>
-
-<p>送料</p>
-
-  <%= order.shipping_cost %>
-
-<p>請求額</p>
-
-  <%= order.order_price %>
-
-<p>支払方法</p>
-
-  <%= order.payment_method %>
-
-<p>受注ステータス</p>
-
-  <%= order.status %>
-
-<% end %>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </main>
-
-  </body>
-
+ <div class="container">
+    <h5>注文履歴一覧画面</h5>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>購入日時</th>
+          <th>購入者</th>
+          <th>注文個数</th>
+        </tr>
+      </thead>
+      <tbody>
+         <tr>
+           <% @orders.each do |order|%>
+           <td><%= link_to"#{order.created_at.strftime('%Y/%m/%d')}",admin_order_path(order.id) %></td>
+           <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+           <td><%= order.order_details.sum(:amount) %>
+         </tr>
+           <% end %>
+      </tbody>
+    </table>
+  </div>
 </html>

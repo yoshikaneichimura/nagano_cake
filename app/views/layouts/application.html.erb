@@ -19,7 +19,11 @@
     <% end %>
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <h1>LOGO<i class="fa-solid fa-strawberry"></i></h1>
+
+          <h1><%= link_to public_homes_top_path,class:"text-ligth" do %>
+          <i class="fas fa-birthday-cake"></i> NAGANOCAKE
+          <% end %>
+          </h1>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse"data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -31,17 +35,19 @@
               <% if customer_signed_in? %>
               <%= link_to"マイページ",public_customer_path(current_customer) ,class:"btn btn-success" %>
               <% elsif admin_signed_in? %>
-              <%= link_to"商品一覧",admin_items_path ,class:"btn btn-white" %>
+              <%= link_to"商品一覧",admin_items_path ,class:"btn btn-danger" %>
               <% else %>
-              <%= link_to"About",public_homes_about_path ,class:"btn btn-white" %>
+              <%= link_to"About",public_homes_about_path ,class:"btn btn-secondary" %>
               <% end %>
             </li>
 
             <li class="nav-item"style="padding-right: 50px;">
-              <% if admin_signed_in? %>
-              <%= link_to"会員一覧",admin_customers_path ,class:"btn btn-white" %>
-              <% else %>
+              <% if customer_signed_in? %>
               <%= link_to"商品一覧",public_items_path ,class:"btn btn-success" %>
+              <% elsif admin_signed_in? %>
+              <%= link_to"会員一覧",admin_customers_path ,class:"btn btn-danger" %>
+              <% else %>
+              <%= link_to"商品一覧",public_items_path ,class:"btn btn-secondary" %>
               <% end %>
             </li>
 
@@ -49,9 +55,9 @@
               <% if customer_signed_in? %>
               <%= link_to"カート",public_cart_items_path,class:"btn btn-success" %>
               <% elsif admin_signed_in? %>
-              <%= link_to"注文履歴一覧",admin_orders_path,class:"btn btn-white" %>
+              <%= link_to"注文履歴一覧",admin_path,class:"btn btn-danger" %>
               <% else %>
-              <%= link_to "新規登録",new_customer_registration_path,class:"btn btn-white" %>
+              <%= link_to "新規登録",new_customer_registration_path,class:"btn btn-secondary" %>
               <% end %>
             </li>
 
@@ -59,39 +65,25 @@
               <% if customer_signed_in? %>
               <%= link_to "ログアウト",destroy_customer_session_path,method: :delete ,class:"btn btn-success" %>
               <% elsif admin_signed_in? %>
-              <%= link_to"ジャンル一覧",admin_genres_path,class:"btn btn-wite" %>
+              <%= link_to"ジャンル一覧",admin_genres_path,class:"btn btn-danger" %>
               <% else %>
-              <%= link_to "ログイン",new_customer_session_path,class:"btn btn-white" %>
+              <%= link_to "ログイン",new_customer_session_path,class:"btn btn-secondary" %>
               <% end %>
             </li>
             <li class="nav-item">
               <% if admin_signed_in? %>
-              <%= link_to "ログアウト",destroy_customer_session_path,method: :delete ,class:"btn btn-white" %>
+              <%= link_to "ログアウト",destroy_customer_session_path,method: :delete ,class:"btn btn-danger" %>
               <% end %>
             </li>
           </ul>
         </nav>
       </div>
     </div>
-      <div>
-        <nav>
-          <ul>
-            <li>ADEMIN</li>
-            <li><%= link_to"管理者トップページ",admin_orders_path %></li>
-            <li><%= link_to"管理者ログイン",new_admin_session_path %></li>
-            <li><%= link_to"商品一覧",admin_items_path  %></li>
-            <li><%= link_to"会員一覧",admin_customers_path %></li>
-            <li><%= link_to"ジャンル一覧",admin_genres_path %></li>
-            <li><%= link_to"TOP",public_homes_top_path %></li>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
 
-
-          </ul>
-          </nav>
-        </div>
-      </header>
-      <main>
-        <%= yield %>
-      </main>
     <% if customer_signed_in? %>
     <footer style="background-color: lime;" >
     <% elsif admin_signed_in? %>
@@ -99,9 +91,13 @@
     <% else %>
     <footer style="background-color: grey;" >
     <% end %>
-    <div class="container">
-      <h5 class="text white">footer</h5>
-    </div>
+      <div class="container">
+        <div class="row">
+          <div class="mx-auto col-lg-2">
+          <h5 class="text-light">ながのCAKE</h5>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

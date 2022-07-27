@@ -1,44 +1,34 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>nagano_cake</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
- <div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg">
+      <div>
+        <p>ようこそ、ながのケーキへ！</p>
+        <p>このサイトは、ケーキ販売のECサイトになります。</p>
+        <p>会員でない方も商品の閲覧はできますが、</p>
+        <p>購入には会員登録が必要になります。</p>
+    </div>
+    <div>
+      <h3><strong>新着商品</strong></h3>
 
+      <% @items.each do |item| %>
 
-    <h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+        <% if item.image.attached? %>
+         <p><%= image_tag item.image,size: "300x300" %></p>
+        <% else %>
+         <p><%= image_tag 'no_image',size:"300x300" %></p>
+        <% end %>
+  
+        <p><%= item.name %></p>
+  
+        <p>￥<%= item.price %></p>
 
-<div>
-  <p>ようこそ、ながのケーキへ！</p>
-  <p>このサイトは、ケーキ販売のECサイトになります。</p>
-  <p>会員でない方も商品の閲覧はできますが、</p>
-  <p>購入には会員登録が必要になります。</p>
-</div>
-<div>
-  <h6>新着商品</h6>
+      <% end %>
+      
+      </div>
 
-  <% @items.each do |item| %>
+      <%=link_to"全ての商品を見る",public_items_path %>
 
-  <% if item.image.attached? %>
-   <p><%= image_tag item.image,size: "300x300" %></p>
-  <% else %>
-   <p><%= image_tag 'no_image',size:"300x300" %></p>
-  <% end %>
-
-  <p><%= item.name %></p>
-
-  <p>￥<%= item.price %></p>
-
-  <% end %>
-  <!--paginate items-->
-
+   </div>
   </div>
+</div>
 
-  <%=link_to"全ての商品を見る",public_items_path %>
-</html>
