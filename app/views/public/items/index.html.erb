@@ -5,14 +5,27 @@
 
     <div class="col-lg-6">
       <% @items.each do |item| %>
+
        <% if item.image.attached? %>
-        <p><%= image_tag item.image,size:"200x200" %></p>
+
+         <p><%= link_to public_item_path(item.id) do %>
+           <%= image_tag item.image,size:"200x200" %>
+         <% end %></p>
+
        <% else %>
-        <p><%= image_tag 'no_image',size:"200x200" %></p>
+
+         <p><%= link_to public_item_path(item.id) do %>
+           <%= image_tag 'no_image',size:"200x200" %>
+         <% end %></p>
+
        <% end %>
-      <p><%= link_to"#{item.name}",public_item_path(item.id) %></p>
+
+      <p><%= item.name %></p>
+
       <p>￥<%= item.price %></p>
+
       <% end %>
+
     </div>
 
   </div>

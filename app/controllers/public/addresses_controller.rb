@@ -2,7 +2,7 @@ class Public::AddressesController < ApplicationController
   def index
     @address = Address.new
     @address.customer_id = current_customer.id
-    @addresses = Address.all
+    @customer = current_customer
 
   end
 

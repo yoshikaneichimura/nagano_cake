@@ -12,7 +12,7 @@
   </thead>
   <tbody>
      <tr>
-     <% @orders.each do |order| %>
+     <% @customer.orders.each do |order| %>
 
       <td><%= order.created_at .strftime('%Y/%m/%d') %></td>
       <td>〒 <%= order.postal_code %>　<%= order.address %>　<%= order.name %></td>

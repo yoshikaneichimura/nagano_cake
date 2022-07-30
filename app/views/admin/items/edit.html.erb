@@ -6,8 +6,8 @@
 
             <label>商品画像</label>　　　　　　<label><%= f.file_field :image,accept:"image/*" %></label>
             <br/>
-          　<label>商品名</label>　　　　　　　<label><%= f.text_field :name %></label>
-          　<br/>
+            <label>商品名</label>　　　　　　　<label><%= f.text_field :name %></label>
+            <br/>
             <label>商品説明</label>　　　　　　<label><%= f.text_area :introduction %></label>
             <br/>
             <label>ジャンル</label>　　　　　　<label><%= f.collection_select :genre_id, Genre.all, :id,:name %></label>

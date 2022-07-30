@@ -1,7 +1,7 @@
 <h5><strong>マイページ</strong></h5>
 
 <div>
-    <label><strong>登録情報</strong></label>　　　<label><%= link_to'編集する',edit_public_customer_path,class:"btn btn-success" %></label>
+    <label><strong>登録情報</strong><%= link_to'編集する',edit_public_customer_path(@customer.id),class:"btn btn-success" %></label>
     <table class="table table-striped">
        <thead>
          <tr>
